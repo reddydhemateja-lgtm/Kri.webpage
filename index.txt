@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Love Adventure</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Space+Mono&display=swap" rel="stylesheet">
+
+<style>
+
+/* GENERAL */
+
+body{
+margin:0;
+background:#ffd6eb;
+font-family:'Space Mono', monospace;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* HEADINGS */
+
+h1{
+font-family:'Dancing Script', cursive;
+font-size:70px;
+color:#b30059;
+}
+
+h2{
+font-family:'Dancing Script', cursive;
+font-size:40px;
+color:#b30059;
+}
+
+/* PAGES */
+
+.page{
+display:none;
+padding:40px;
+}
+
+.active{
+display:block;
+}
+
+/* START SCREEN */
+
+.startScreen{
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+
+height:100vh;
+
+animation:fadeIn 2s;
+
+}
+
+@keyframes fadeIn{
+
+from{opacity:0}
+to{opacity:1}
+
+}
+
+/* BUTTONS */
+
+button{
+
+padding:14px 24px;
+margin:12px;
+
+border:none;
+border-radius:30px;
+
+background:#ff7ab8;
+color:white;
+
+cursor:pointer;
+
+box-shadow:
+0 0 10px #ff7ab8,
+0 0 25px #ff7ab8,
+0 0 45px #ff4fa4;
+
+animation:float 3s ease-in-out infinite;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+transform:scale(1.1);
+
+box-shadow:
+0 0 20px #ff7ab8,
+0 0 40px #ff4fa4,
+0 0 60px #ff2f92;
+
+}
+
+@keyframes float{
+
+0%{transform:translateY(0)}
+50%{transform:translateY(-6px)}
+100%{transform:translateY(0)}
+
+}
+
+/* LETTER PAGE */
+
+.letterPage{
+background:#f5e7c8;
+}
+
+.scroll{
+
+background:white;
+
+width:70%;
+margin:auto;
+
+padding:30px;
+
+border-radius:12px;
+
+box-shadow:0 0 25px rgba(0,0,0,.25);
+
+animation:openScroll 1.2s ease;
+
+}
+
+@keyframes openScroll{
+
+0%{transform:scaleY(0)}
+100%{transform:scaleY(1)}
+
+}
+
+/* MEMORY PAGE */
+
+.memoryPage{
+background:#c8f2d4;
+}
+
+.heartBox{
+
+background:white;
+
+padding:20px;
+margin:20px auto;
+
+width:60%;
+
+border-radius:25px;
+
+border:3px solid #ff8ac6;
+
+box-shadow:0 0 20px rgba(255,100,160,.5);
+
+}
+
+/* STAR PAGE */
+
+.starPage{
+
+background:#02021a;
+color:white;
+height:100vh;
+position:relative;
+overflow:hidden;
+
+}
+
+/* BACKGROUND STARS */
+
+.bgStar{
+
+position:absolute;
+color:#9bbcff;
+font-size:14px;
+
+opacity:.9;
+
+filter:drop-shadow(0 0 8px #9bbcff);
+
+}
+
+/* CLICKABLE STARS */
+
+.star{
+
+font-size:45px;
+position:absolute;
+
+cursor:pointer;
+
+filter:drop-shadow(0 0 12px #9bbcff);
+
+transition:.3s;
+
+}
+
+.star:hover{
+transform:scale(1.4);
+}
+
+/* STAR MESSAGE */
+
+.starMessage{
+
+background:white;
+
+color:black;
+
+padding:20px;
+
+border-radius:20px;
+
+width:40%;
+
+margin:30px auto;
+
+box-shadow:0 0 20px rgba(255,255,255,.6);
+
+display:none;
+
+}
+
+/* FLOATING PETALS */
+
+.petal{
+
+position:fixed;
+
+top:-20px;
+
+font-size:20px;
+
+animation:fall linear infinite;
+
+}
+
+@keyframes fall{
+
+0%{transform:translateY(-10vh)}
+100%{transform:translateY(110vh)}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- START SCREEN -->
+
+<div id="start" class="page active startScreen">
+
+<h1>Love Adventure</h1>
+
+<button onclick="showPage('menu')">Explore</button>
+
+</div>
+
+
+<!-- MENU -->
+
+<div id="menu" class="page">
+
+<h2>Choose Your Adventure</h2>
+
+<button onclick="showPage('present')">🐰 Open Present</button>
+
+<button onclick="showPage('letter')">💌 Read Letter</button>
+
+<button onclick="showPage('memory')">🍃 Our Memories</button>
+
+<button onclick="showPage('stars')">🌌 Stargazing</button>
+
+<button onclick="showSecret()">🔐 Secret Message</button>
+
+<button onclick="showPage('final')">🎂 Finish Adventure</button>
+
+</div>
+
+
+<!-- PRESENT -->
+
+<div id="present" class="page">
+
+<h2>Special Delivery</h2>
+
+<img src="<img src="https://ibb.co/qFc4ycm6" width="300"
+style="border-radius:20px; box-shadow:0 0 25px #ff7ab8;">
+" width="300">
+
+<p>A bunny rode a bike to bring flowers to the birthday boy 🌸</p>
+
+<button onclick="showPage('menu')">Back</button>
+
+</div>
+
+
+<!-- LETTER -->
+
+<div id="letter" class="page letterPage">
+
+<h2>A Letter For You</h2>
+
+<div class="scroll">
+
+<p>
+Hie baby, first of all.. happiest 18th birthday my dearest. I was with you when you were 15 years old, and now you're suddenly 18, an adult... Heheh i can't believe I'm dating an adult now! Atleast for one year I am..and I'm not in the slightest, ashamed that i belong to you; you were always there for me.. being my anchor, being my light in the darkest of times.. no.. if you're the darkness, you're the reason i shine.. cuz I'm your chaand 🌕✨. On this day, i want you to remember that this wife of yours, will never every do anything to see your eyes fill with tears again, I'll make sure that every time you cry from this day on, would be of overwhelming happiness.. i only want to see you achieve success and everything you desire, i want you to be yourself.. i want you to enjoy your life to the fullest with my support always by your side and that will never ever change. The words to express my love for you are really small and i don't know how to express the feelings I have for you in words, today, I'm making my best attempt at expressing just how much you mean to me.. To me, you're my whole world, you're the person who can make me laugh or cry with just the smallest of words or actions, your smile lights up my gloomy days, your reassuring words, fill me up a whole lot with hope and the feelings of not giving up, when I was on my path of self destruction, hating myself for who i am, being insecure about the smallest of things..  listens to me, to hanuman, to my universe that "i want this man for my whole life", those words always leaves my lips whenever I enter at a temple, whenever I go to a darga, to pray. Whenever I'm alone, my thoughts are all consumed by you, i want you by my side forever, i want you to know that there's no one in this life, in all the lives which I'll have after this one, more suitable for me other than you, your love is like a drug, and I'm afraid.. I'm already addicted to it..  even if this love disappears tonight, the idea of you, the face of yours, the eyes which hold such strong emotions, they'll be the things I remember.. forever. Sometimes, I wonder if I can lose my memory again, so that I can experience falling in love with you again, or if I can go back in time in 4th grade and make you my friend from the start.. so that you'll never have to suffer from any pain that people caused you in my absence.. i want to experience the late night chats again, getting to know about eachother for the first time, the bike ride that I had after many many years, it was with you, the time that I spent with you is the best time of my life and the time that I'll be spending with you in the future will be even better.. we'll go to some place which is quiet, you'll be super duper famous and we'll live in a small house built by our love towards each other.. small candid photos of us hanging on the walls, in the kitchen, us making out after having our dinner, us going to shopping to buy new things, just ordinary stuff which we all do in our daily life.. but it'll all be worth it cuz it'll be with you, I'll be your wife which the world will know, I'll be known as the wife you irfan khan and you'll be known as the husband of krisha parmar i imagine our future to be full of feelings and rainbows and sunshine.. cuz I'll have you in my life.. janaa.. i really can't imagine anyone else other than you to be my partner.. it's not just about how good you look or that how good you flirt.. you're patient with me.. if I don't understand a thing 50 times, you teach me that with the same calmness as much as I ask.. you always make sure that I'm feeling better and you always consider my feelings first before yours, yea, sometimes I make grave mistakes but then everything becomes alright.. cuz you're the one always letting go.. you taught me many things.. not just loving someone, but also the actions that you have to do to make sure that your partner always feels loved.. tonight, i want you to feel the love I have for you, i want you to smile so hard that your cheeks hurt from smiling... heheh.. i want you to shine the brightest! I wish you can realise how handsome of a man you are, in looks and personality both, i can legit say this to anyone and they won't even disagree that my man is the most handsome of them all! You're tall,  (even though it doesn't matter but still I wanna say it heheh), you have a jawline that is sharper than blades ( i have a jaw circle hehe) ,  and your hot and cute face.. some times you're so hot that even the sun in ashamed cuz it's not hotter than you, and the next minute, you're soo adorable that i just want to squash your cheeks and squeal soo loud that even my neighbours would be scared hehe, you're an adorable bean, don't even get me started on the eyes, there's a saying, that "eyes are the windows, to a person's soul", and i highly agree with that fact, since your eyes , dark but when the sun shines, they're hazel, the most beautiful gem in this whole world, i get lost in them, and when you're looking at me when our faces are inches apart, it makes me want to kiss you more.. your soul is the most pure thing, or consciousness, in this entire universe, cuz you're always kind, atleast to me you are hehe.. your hair, even though you cut them cuz of the school, they have this brown shine in them that makes you even more ethereal.. you know of that saying? That, "you have moles on your body where you past lover loved to kiss you", i guess i loved to kiss your face cuz you have many moles on your face, that just enhances your handsomeness hehehe.. darling.. if I had to kiss you and go to hell, i definitely would, cuz then in the hell I can brag to the devils that i saw heaven without even entering it.. let's remember our story from my point of view, our first meeting.. the starting of a story so beautiful and ethereal that it's painfull to not remember it.. it was just a random House uniform day, before that, my life had turned upside down and it was just going down and down.. i was hanging out with Supriya like usual cuz she was obsessed with that kartik.. your friend. So, me being me, i was their communication channel and I was just telling him her thoughts when suddenly, in a most unexpected way, a boy with such pure and bright brown -hazel like- eyes came forward, you. And in that moment.. i never realised that my life would have colours again and I'd find someone who'd worship me, love me, protect me, teach me, and let me be how I want. You entered my life with such a light that I lost my breath the moment i saw your face, you had this kind smile which I fell head over heels for, and you stared at me.. ofc you were hell lot taller than me but I'm the one who has the authority hehehhe. (I love you). We had this really weird conversation and then, i complimented, "you look really nice." I wonder from where I got that courage cuz I was nervous as hell when approaching you, before that fateful meeting on the ground, i never knew there was a irfan pathan in our class, i always mistook your name as someone else but I never knew that my life would be incomplete without this irfan pathan. My husband.  
+
+So, my husband, let's not keep the letter too long, and lemme confess my love, that I LOVE YOU and I'll love you only in this whole wide world I don't care about anyone other than you.. 
+You're my knight in shining armour babyyy, my bodyguard 🎀✨💋 
+
+I love you sooo much janaaaa 🌸 🎀 ✨</p>
+
+</div>
+
+<button onclick="showPage('menu')">Back</button>
+
+</div>
+
+
+<!-- MEMORY -->
+
+<div id="memory" class="page memoryPage">
+
+<h2>Our Memories</h2>
+
+<div class="heartBox">
+
+<h3>Bike Ride</h3>
+
+<p>heheheh this was the first time that i sat on a bike after a long Time, going to amul to buy bread, i went but ofcourse there wasa hidden motive, it was to meet you... and i swear i was really happy that day, you took off with such  speed that it left me breathless and when i started screaming, u told mee "chillao mat varn utaar dunga.." heheh but i know my jaan won't ever do it cuz he loves me a lot ✨💋 
+.</p>
+
+</div>
+
+<div class="heartBox">
+
+<h3>First Meeting</h3>
+
+<p>I never knew.. an ordinary day could be the starting of something soo beautiful and real, it was just an ordinary house dress uniform day when i decided that I'll exchange information between kartik and supriya and now.. looking back, i never regret that thought, we met on the school grounds, our eyes meeing eachother and then never leaving eachother, it was the best day ever!!! 
+.</p>
+
+</div>
+
+<button onclick="showPage('menu')">Back</button>
+
+</div>
+
+
+<!-- STARS -->
+
+<div id="stars" class="page starPage">
+
+<h2>Stargazing Together</h2>
+
+<span class="star" style="top:200px; left:20%" onclick="showStar(1)">⭐</span>
+<span class="star" style="top:300px; left:40%" onclick="showStar(2)">⭐</span>
+<span class="star" style="top:150px; left:60%" onclick="showStar(3)">⭐</span>
+<span class="star" style="top:350px; left:70%" onclick="showStar(4)">⭐</span>
+<span class="star" style="top:250px; left:80%" onclick="showStar(5)">⭐</span>
+
+<div id="starMessage" class="starMessage"></div>
+
+<button onclick="showPage('menu')">Back</button>
+
+</div>
+
+
+<!-- FINAL -->
+
+<div id="final" class="page">
+
+<h1>Happiest Birthday My Jaan ❤️</h1>
+
+<p>thank you for forever being there for me.. even when i thought i won't need anyone.. and I'll be there for you forever 🎀✨🫂</p>
+
+</div>
+
+
+<script>
+
+/* PAGE SWITCH */
+
+function showPage(page){
+
+let pages=document.querySelectorAll('.page')
+
+pages.forEach(p=>p.classList.remove('active'))
+
+document.getElementById(page).classList.add('active')
+
+if(page==="stars"){createStars()}
+
+}
+
+/* SECRET MESSAGE */
+
+function showSecret(){
+
+let open=confirm("A secret message appeared... open it?")
+
+if(open){
+
+alert("This princess has a huge crush on you!! ❤️")
+
+}
+
+}
+
+/* STAR MESSAGES */
+
+function showStar(n){
+
+let messages=[
+
+"You're a gentleman",
+
+"You never raise your voice at me",
+
+"You always listen to me",
+
+"You treat me like I'm everything",
+
+"You broke my standards chart"
+
+]
+
+let box=document.getElementById("starMessage")
+
+box.style.display="block"
+
+box.innerText=messages[n-1]
+
+}
+
+/* CREATE STARS ONLY ON STAR PAGE */
+
+function createStars(){
+
+let starPage=document.getElementById("stars")
+
+for(let i=0;i<70;i++){
+
+let star=document.createElement("div")
+
+star.className="bgStar"
+
+star.innerHTML="✦"
+
+star.style.left=Math.random()*100+"vw"
+
+star.style.top=Math.random()*100+"vh"
+
+starPage.appendChild(star)
+
+}
+
+}
+
+/* PETALS */
+
+function petals(){
+
+let icons=["🌸","✨","💗"]
+
+let el=document.createElement("div")
+
+el.className="petal"
+
+el.innerHTML=icons[Math.floor(Math.random()*icons.length)]
+
+el.style.left=Math.random()*100+"vw"
+
+el.style.animationDuration=5+Math.random()*5+"s"
+
+document.body.appendChild(el)
+
+setTimeout(()=>{el.remove()},10000)
+
+}
+
+setInterval(petals,700)
+
+</script>
+
+</body>
+</html>
